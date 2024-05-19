@@ -1,21 +1,22 @@
+def erase_overlap_intervals(intervals)
+  count = 0
+  n = intervals.size
+  return 0 if n < 2
 
+  intervals.sort_by! {|item| item[0]}
 
-
-# @param {Integer[]} nums
-# @return {Integer[]}
-def get_concatenation(nums)
-  result = []
-  nums.each { |num| result << num}
-  nums.each { |num| result << num}
-  result
+  previous_end = intervals[0][1]
+  
+  (1...intervals.size).each do |i|
+    if intervals[i][0] < previous_end
+      count += 1
+    else
+      previous_end = intervals[i][1]
+    end
+  end
+  count
 end
 
-# more simepler
+intervals = [[1,2],[2,3],[3,4],[1,3]]
 
-# def get_concatenation(nums)
-#   nums.concat(nums)
-# end
-
-nums = [1,3,2,1]
-
-puts get_concatenation(nums)
+puts erase_overlap_intervals(intervals)
