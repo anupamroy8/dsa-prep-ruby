@@ -40,7 +40,7 @@ end
 
 def solve(a,b)
   (a.chars|b.chars).inject(0){|s,x|
-  s+(return 0if b.count(x)>a.count(x)
+  s+(return 0 if b.count(x)>a.count(x)
   a.count(x)-b.count(x))
   }
 end
